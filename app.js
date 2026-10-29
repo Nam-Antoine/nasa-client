@@ -389,6 +389,14 @@ function addDays(date, days) {
 // ---------- Start ----------
 
 $("inputDate").max = today();
+// Desktop browsers don't open the calendar when the (invisible) date box itself is clicked
+$("inputDate").addEventListener("click", (e) => {
+    try {
+        e.target.showPicker();
+    } catch (err) {
+        // Older browsers, or the picker is already open
+    }
+});
 $("inputDate").addEventListener("change", (e) => {
     if (e.target.value) {
         openDate(e.target.value);
