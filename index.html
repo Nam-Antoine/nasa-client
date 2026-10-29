@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>NASA-client</title>
+
+    <!-- Lets "Add to Home Screen" on iPhone open the page like an app -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="NASA-client">
+    <meta name="theme-color" content="#05060a">
+    <link rel="apple-touch-icon" href="icon-180.png">
+    <link rel="icon" type="image/png" href="icon-180.png">
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Today screen: picture, day navigation, story -->
+    <main id="todayScreen" class="screen">
+        <div id="loading" class="loading">
+            <div class="hero skeleton"><span class="label">Finding your place in space…</span></div>
+            <div class="card skeleton-bar"></div>
+            <div class="card skeleton-bar tall"></div>
+        </div>
+
+        <div id="errorView" class="error" hidden>
+            <h2>Lost in space</h2>
+            <p id="textError"></p>
+            <button id="buttonRetry" class="button" type="button">Try again</button>
+            <button id="buttonErrorToday" class="button" type="button">Today</button>
+        </div>
+
+        <article id="contentView" hidden>
+            <div id="hero" class="hero">
+                <img id="imagePicture" alt="">
+                <div class="hero-actions">
+                    <span class="label">NASA / APOD</span>
+                    <button id="buttonFavorite" class="icon-button" type="button" aria-label="Save" aria-pressed="false">♡</button>
+                    <a id="buttonOpenOriginal" class="icon-button" target="_blank" rel="noopener" aria-label="Open original image">↗</a>
+                </div>
+                <div class="title-card">
+                    <h1 id="textTitle"></h1>
+                    <p id="textInfo" class="label"></p>
+                </div>
+            </div>
+
+            <nav class="day-nav">
+                <div class="card day-controls">
+                    <button id="buttonPrevious" type="button">‹ Prev</button>
+                    <label class="date-chip">
+                        <span id="textDate"></span>
+                        <!-- Invisible date input on top of the chip, so a tap opens the native picker -->
+                        <input id="inputDate" type="date" min="1995-06-16" aria-label="Pick date">
+                    </label>
+                    <button id="buttonNext" type="button">Next ›</button>
+                </div>
+                <button id="buttonToday" class="button today" type="button">Today</button>
+            </nav>
+
+            <section class="card story">
+                <span class="label">Behind the picture</span>
+                <p id="textExplanation"></p>
+            </section>
+        </article>
+    </main>
+
+    <!-- Favorites screen: grid of saved pictures -->
+    <section id="favoritesScreen" class="screen favorites-screen" hidden>
+        <span class="label">Your universe, collected</span>
+        <h2>Favorites</h2>
+        <p class="hint">Tap a picture to open it. Tap ✕ to remove it.</p>
+        <p id="textEmpty" class="empty">♡<br>No favorites yet<br>Tap the heart on a picture to save it here.</p>
+        <ul id="listFavorites" class="grid"></ul>
+    </section>
+
+    <nav class="tabs">
+        <button id="tabToday" class="tab active" type="button">Today</button>
+        <button id="tabFavorites" class="tab" type="button">Favorites</button>
+    </nav>
+
+    <div id="toast" class="toast" hidden></div>
+
+    <script src="app.js"></script>
+</body>
+</html>

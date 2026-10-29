@@ -1,0 +1,12 @@
+{
+    "name": "NASA-client",
+    "short_name": "NASA-client",
+    "start_url": "./",
+    "display": "standalone",
+    "background_color": "#05060a",
+    "theme_color": "#05060a",
+    "icons": [
+        { "src": "icon-180.png", "sizes": "180x180", "type": "image/png" },
+        { "src": "icon-512.png", "sizes": "512x512", "type": "image/png" }
+    ]
+}
